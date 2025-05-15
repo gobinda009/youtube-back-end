@@ -4,11 +4,13 @@ const ytdl = require('@distube/ytdl-core')
 const app = express()
 const PORT = 5000
 
-app.use(cors())
-app.use(express.json())
 app.use(cors({
-  origin: '*'
+  origin: '*',
+  methods: ['GET', 'POST'],
+  allowedHeaders: ['Content-Type']
 }))
+app.use(express.json())
+
 app.get('/', (req, res) => {
   res.send('YouTube Downloader API is running')
 })
